@@ -1,0 +1,50 @@
+<app-loading *ngIf="loadingArtist"></app-loading>
+<div class="row animated fadeIn" *ngIf="!loadingArtist">
+    <div class="col-2">
+        <img [src]="artista.images | noimage" class="img-thumbnail img-circle">
+    </div>
+    <div class="col">|
+        <h3>{{ artista.name }}</h3>
+        <p>
+            <a [href]="artista.external_urls.spotify" target="_blank">
+                Ir a la pagina del artista
+            </a>
+        </p>
+    </div>
+    <div class="col-4 text-right">
+        <button type="button" class="btn btn-outlet-danger" routerLink="/search">
+            Regresar
+        </button>
+    </div>
+</div>
+<div class="row m-5">
+    <div class="col">
+        <table class="table">
+            <thead>
+                <th>Foto</th>
+                <th>Album</th>
+                <th>Canción</th>
+                <th>Vista Previa</th>
+            </thead>
+            <tbody>
+                <!-- <tr *ngFor="let track of topTracks"> antes-->
+                <!-- Después -->
+                <tr *ngFor="let track of topTracks.tracks">
+                    <td>
+                        <img [src]="track.album.images | noimage" class="img-thumb">
+                    </td>
+                    <td>{{track.album.name}}</td>
+                    <td>{{track.name}}</td>
+                    <td>
+                        <!-- antes <iframe [src]="track.uri | domsdeguro" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> -->
+                        <!-- Después -->
+                        <iframe [src]="track.preview_url | domsdeguro" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <!-- 2da opción <iframe style="border-radius:12px" [src]='"https://open.spotify.com/embed/playlist/"+track.id+"?utm_source=generator" | domsdeguro' width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe> -->
+
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
