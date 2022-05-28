@@ -1,3 +1,5 @@
+<!-- Componente para mostrar el toptracks del artista -->
+
 <app-loading *ngIf="loadingArtist"></app-loading>
 <div class="row animated fadeIn" *ngIf="!loadingArtist">
     <div class="col-2">
@@ -12,7 +14,7 @@
         </p>
     </div>
     <div class="col-4 text-right">
-        <button type="button" class="btn btn-outlet-danger" routerLink="/search">
+        <button type="button" class="btn btn-outlet-danger" routerLink="/home">
             Regresar
         </button>
     </div>
